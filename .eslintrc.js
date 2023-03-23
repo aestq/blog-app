@@ -45,7 +45,10 @@ module.exports = {
     'react/jsx-indent': ['error', 2],
     '@typescript-eslint/explicit-module-boundary-types': 'error',
     'react/jsx-boolean-value': 'error',
-    'react/jsx-key': 'error'
+    'react/jsx-key': 'error',
+    '@typescript-eslint/space-before-function-paren': 'off',
+    '@typescript-eslint/keyword-spacing': 'off',
+    'no-trailing-spaces': ['error', { skipBlankLines: true }]
   },
   globals: {
     __IS_DEV__: true
