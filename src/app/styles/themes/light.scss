@@ -1,17 +1,17 @@
-.app.light {
-  --bg-color: #e8e8ea;
-  --inverted-bg-color: #090949;
-  --primary-color: #0232c2;
-  --secondary-color: #0449e0;
-  --inverted-primary-color: #049604;
-  --inverted-secondary-color: #04ff04;
-}
-
 // .app.light {
 //  --bg-color: #e8e8ea;
-//  --inverted-bg-color: #314692;
-//  --primary-color: #526ed3;
-//  --secondary-color: #ebefff;
-//  --inverted-primary-color: #d8ddf2;
-//  --inverted-secondary-color: #3c61e3;
+//  --inverted-bg-color: #090949;
+//  --primary-color: #0232c2;
+//  --secondary-color: #0449e0;
+//  --inverted-primary-color: #049604;
+//  --inverted-secondary-color: #04ff04;
 // }
+
+.app.light {
+  --bg-color: #e8e8ea;
+  --inverted-bg-color: #314692;
+  --primary-color: #526ed3;
+  --secondary-color: #ebefff;
+  --inverted-primary-color: #d8ddf2;
+  --inverted-secondary-color: #3c61e3;
+}
