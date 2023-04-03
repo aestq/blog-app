@@ -6,8 +6,11 @@
   transition: width 0.4s;
 }
 
-.collapsed {
-  width: var(--sidebar-width-collapsed);
+.collapseButton {
+  position: absolute;
+  right: -32px;
+  bottom:  27px;
+  border-radius: 0 5px 5px 0;
 }
 
 .switchers {
@@ -17,4 +20,44 @@
   justify-content: center;
   width: 100%;
   gap: 10px;
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 30px;
+  margin-left: 30px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icon {
+  fill: var(--inverted-primary-color);
+}
+
+.collapsed {
+  width: var(--sidebar-width-collapsed);
+
+  .switchers {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .items {
+    align-items: center;
+    margin-left: 0;
+    gap: 25px;
+  }
+
+  .link {
+    opacity: 0;
+    transition: .2s opacity;
+    width: 0;
+    height: 0;
+  }
 }
