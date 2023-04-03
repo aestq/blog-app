@@ -1,7 +1,7 @@
 .Button {
   cursor: pointer;
   font: var(--font-size-m);
-  color: var(--inverted-primary-color);
+  color: var(--primary-color);
   border: none;
   padding: 6px 15px;
   border-radius: var(--radius-button);
@@ -9,17 +9,20 @@
 
 .clear {
   padding: 0;
+  border: none;
   background: none;
   outline: none;
 }
 
 .outline {
-  background: none;
   border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  background: none;
 }
 
 .background {
   background: var(--bg-color);
+  color: var(--primary-color);
 }
 
 .backgroundInverted {
