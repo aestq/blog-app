@@ -1,14 +1,14 @@
 import { classNames, type Mods } from 'shared/lib/classNames/classNames'
-import { useState } from 'react'
-import { ThemeSwitcher } from 'shared/ui/ThemeSwitcher/ThemeSwitcher'
-import { LangSwitcher } from 'shared/ui/LangSwitcher/LangSwitcher'
-import { Button, ButtonSize, ButtonTheme } from 'shared/ui/Button/Button'
+import { ThemeSwitcher } from 'features/ThemeSwitcher'
+import { LangSwitcher } from 'features/LangSwitcher'
 import { useTranslation } from 'react-i18next'
-import cls from './Sidebar.module.scss'
+import { useState } from 'react'
+import { Button, ButtonSize, ButtonTheme } from 'shared/ui/Button/Button'
 import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink'
-import { RoutePath } from 'shared/config/routeConfig/routeConfig'
 import MainIcon from 'shared/assets/icons/MainIcon.svg'
 import AboutIcon from 'shared/assets/icons/AboutIcon.svg'
+import { RoutePath } from 'shared/config/routeConfig/routeConfig'
+import cls from './Sidebar.module.scss'
 
 interface SidebarProps {
   className?: string

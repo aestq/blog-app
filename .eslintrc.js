@@ -31,7 +31,8 @@ module.exports = {
   },
   plugins: [
     'react',
-    'i18next'
+    'i18next',
+    'react-hooks'
   ],
   settings: {
     react: {
@@ -54,7 +55,9 @@ module.exports = {
     'react/jsx-key': 'error',
     '@typescript-eslint/space-before-function-paren': 'off',
     '@typescript-eslint/keyword-spacing': 'off',
-    'no-trailing-spaces': ['error', { skipBlankLines: true }]
+    'no-trailing-spaces': ['error', { skipBlankLines: true }],
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'error'
   },
   globals: {
     __IS_DEV__: true

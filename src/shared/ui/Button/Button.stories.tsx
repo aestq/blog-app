@@ -1,7 +1,7 @@
 import { type ComponentMeta, type ComponentStory } from '@storybook/react'
 import { Button, ButtonSize, ButtonTheme } from './Button'
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator'
-import { Theme } from 'app/providers/ThemeProvider'
+import { Theme } from 'shared/lib/context/ThemeContext'
 
 export default {
   title: 'shared/Button',
@@ -16,6 +16,12 @@ const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />
 export const Clear = Template.bind({})
 Clear.args = {
   theme: ButtonTheme.CLEAR,
+  children: 'Текст кнопки'
+}
+
+export const ClearInverted = Template.bind({})
+ClearInverted.args = {
+  theme: ButtonTheme.CLEAR_INVERTED,
   children: 'Текст кнопки'
 }
 
@@ -43,6 +49,13 @@ ClearDark.args = {
   children: 'Текст кнопки'
 }
 ClearDark.decorators = [ThemeDecorator(Theme.DARK)]
+
+export const ClearInvertedDark = Template.bind({})
+ClearInvertedDark.args = {
+  theme: ButtonTheme.CLEAR_INVERTED,
+  children: 'Текст кнопки'
+}
+ClearInvertedDark.decorators = [ThemeDecorator(Theme.DARK)]
 
 export const OutlineDark = Template.bind({})
 OutlineDark.args = {
