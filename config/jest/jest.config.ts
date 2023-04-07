@@ -33,7 +33,10 @@ export default {
   testMatch: [
     '<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)'
   ],
-  setupFilesAfterEnv: ['<rootDir>/config/jest/setupTests.ts']
+  setupFilesAfterEnv: ['<rootDir>/config/jest/setupTests.ts'],
+  globals: {
+    __IS_DEV__: true
+  }
   // All imported modules in your tests should be mocked automatically
   // automock: false,
 
@@ -90,7 +93,6 @@ export default {
   // globalTeardown: undefined,
 
   // A set of global variables that need to be available in all test environments
-  // globals: {},
 
   // The maximum amount of workers used to run your tests. Can be specified as % or a number. E.g. maxWorkers: 10% will use 10% of your CPU amount + 1 as the maximum worker number. maxWorkers: 2 will use a maximum of 2 workers.
   // maxWorkers: "50%",
