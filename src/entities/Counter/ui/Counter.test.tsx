@@ -1,6 +1,7 @@
 import { renderComponent } from 'shared/lib/tests/renderComponent'
 import { Counter } from './Counter'
-import { userEvent, screen } from '@storybook/testing-library'
+import { screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
 describe('Counter', () => {
   test('render counter', () => {
