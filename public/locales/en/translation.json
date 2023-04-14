@@ -7,5 +7,7 @@
   "Произошла ошибка": "An error has occurred",
   "Обновить страницу": "Reload page",
   "Короткий язык": "En",
-  "Войти": "Log in"
+  "Войти": "Log in",
+  "Введите username": "Enter username",
+  "Введите пароль": "Enter password"
 }

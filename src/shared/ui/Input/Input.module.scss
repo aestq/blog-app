@@ -1,0 +1,12 @@
+.Input {
+  background: transparent;
+  outline: none;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  border-radius: var(--radius-input);
+  padding: 4px 14px;
+
+  &::placeholder {
+    color: var(--primary-color);
+  }
+}
