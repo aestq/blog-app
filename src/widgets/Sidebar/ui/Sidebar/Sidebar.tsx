@@ -16,7 +16,7 @@ interface SidebarProps {
 
 export const Sidebar = (props: SidebarProps) => {
   const { className } = props
-  const [collapsed, setCollapsed] = useState<boolean>(false)
+  const [collapsed, setCollapsed] = useState(false)
   const { t } = useTranslation()
 
   const onToggle = () => {

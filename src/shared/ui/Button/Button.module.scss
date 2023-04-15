@@ -5,6 +5,10 @@
   border: none;
   padding: 6px 15px;
   border-radius: var(--radius-button);
+
+  &:disabled {
+    opacity: 0.5;
+  }
 }
 
 .clear, .clearInverted {

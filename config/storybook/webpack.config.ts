@@ -1,4 +1,4 @@
-import { type Configuration, type RuleSetRule } from 'webpack'
+import { type Configuration, type RuleSetRule, DefinePlugin } from 'webpack'
 import { buildCssLoader } from '../build/loaders/buildCssLoader'
 import { resolve } from 'path'
 
@@ -21,6 +21,10 @@ export default ({ config }: { config: Configuration }): Configuration => {
     issuer: /\.[jt]sx?$/,
     use: ['@svgr/webpack']
   })
+
+  config.plugins.push(new DefinePlugin({
+    __IS_DEV__: true
+  }))
 
   return config
 }

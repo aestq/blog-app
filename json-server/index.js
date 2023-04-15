@@ -1,11 +1,15 @@
 const fs = require('fs')
 const path = require('path')
 const jsonServer = require('json-server')
+const cors = require('cors')
 
 const server = jsonServer.create()
 const router = jsonServer.router(path.resolve(__dirname, 'database.json'))
 
 server.use(jsonServer.bodyParser)
+server.use(cors({
+  origin: 'http://localhost:3000'
+}))
 
 server.use(async (request, response, next) => {
   await new Promise(resolve => {
