@@ -54,6 +54,7 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     'react/jsx-boolean-value': 'error',
     'react/jsx-key': 'error',
+    '@typescript-eslint/no-dynamic-delete': 'off',
     '@typescript-eslint/space-before-function-paren': 'off',
     '@typescript-eslint/keyword-spacing': 'off',
     'no-trailing-spaces': ['error', { skipBlankLines: true }],
