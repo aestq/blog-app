@@ -5,5 +5,17 @@
       "username": "admin",
       "password": "123"
     }
+  ],
+  "profiles": [
+    {
+      "firstName": "Петя",
+      "lastName": "Петров",
+      "age": 20,
+      "currency": "RUB",
+      "country": "Russia",
+      "city": "Москва",
+      "username": "admin",
+      "avatar": "https://cdn-icons-png.flaticon.com/512/5904/5904059.png"
+    }
   ]
 }

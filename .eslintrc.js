@@ -60,7 +60,8 @@ module.exports = {
     'no-trailing-spaces': ['error', { skipBlankLines: true }],
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'error',
-    'react/display-name': 'off'
+    'react/display-name': 'off',
+    '@typescript-eslint/no-misused-promises': 'off'
   },
   globals: {
     __IS_DEV__: true
