@@ -39,7 +39,7 @@ server.post('/login', (request, response) => {
 server.use(router)
 
 server.use((request, response, next) => {
-  if (!request.headers.authorization) {
+  if (!request.headers.Authorization) {
     return response.status(401).json({ message: 'Не авторизован' })
   }
   next()

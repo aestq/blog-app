@@ -4,6 +4,7 @@ import { type LoginSchema } from 'features/AuthByUsername'
 import { type EnhancedStore, type Reducer, type ReducersMapObject } from '@reduxjs/toolkit'
 import { type AnyAction, type CombinedState } from 'redux'
 import { type EditableProfileSchema } from 'features/EditableProfile'
+import { type AxiosInstance } from 'axios'
 
 export interface StateSchema {
   counter: CounterSchema
@@ -25,4 +26,13 @@ export interface ReducerManager {
 
 export interface ReduxStoreWithManager extends EnhancedStore<StateSchema> {
   reducerManager: ReducerManager
+}
+
+interface ThunkExtraArgs {
+  api: AxiosInstance
+}
+
+export interface ThunkConfig<T> {
+  extra: ThunkExtraArgs
+  rejectValue: T
 }
