@@ -1,8 +1,11 @@
 import { EditableProfile } from 'features/EditableProfile'
+import cls from './ProfilePage.module.scss'
 
 const ProfilePage = () => {
   return (
-    <EditableProfile />
+    <div className={cls.ProfilePage}>
+      <EditableProfile />
+    </div>
   )
 }
 

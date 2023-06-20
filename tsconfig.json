@@ -21,6 +21,7 @@
     // Если какая-то библиотека не имеет import default
     //Позволяет использовать default import вместо import * as path from 'path'
     "allowSyntheticDefaultImports": true,
+    "strict": true,
     "baseUrl": ".",
     "paths": {
       "*": ["./src/*"]
