@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { type EditableProfileSchema } from '../types/EditableProfile'
 import { fetchProfileData } from '../services/fetchProfileData'
+import { type EditableProfileSchema } from '../types/EditableProfile'
 
 const initialState: EditableProfileSchema = {
   isLoading: false,

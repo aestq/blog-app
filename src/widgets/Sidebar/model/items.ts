@@ -1,8 +1,8 @@
 import { type VFC, type SVGProps } from 'react'
-import { routePath } from 'shared/config/routeConfig/routeConfig'
-import MainIcon from 'shared/assets/icons/MainIcon.svg'
 import AboutIcon from 'shared/assets/icons/AboutIcon.svg'
+import MainIcon from 'shared/assets/icons/MainIcon.svg'
 import ProfileIcon from 'shared/assets/icons/ProfileIcon.svg'
+import { routePath } from 'shared/config/routeConfig/routeConfig'
 
 export interface SidebarItemType {
   Icon: VFC<SVGProps<SVGSVGElement>>

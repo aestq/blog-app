@@ -7,7 +7,8 @@ module.exports = {
   extends: [
     'plugin:react/recommended',
     'standard-with-typescript',
-    'plugin:i18next/recommended'
+    'plugin:i18next/recommended',
+    '@feature-sliced'
   ],
   overrides: [
     {
@@ -62,7 +63,8 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'error',
     'react/display-name': 'off',
     '@typescript-eslint/no-misused-promises': 'off',
-    '@typescript-eslint/no-invalid-void-type': 'off'
+    '@typescript-eslint/no-invalid-void-type': 'off',
+    '@typescript-eslint/no-non-null-assertion': 'warn'
   },
   globals: {
     __IS_DEV__: true,

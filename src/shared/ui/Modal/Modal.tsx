@@ -1,10 +1,10 @@
-import { classNames, type Mods } from 'shared/lib/classNames/classNames'
 import {
   type MouseEvent, type ReactNode, useCallback, useEffect, useRef, useState
 } from 'react'
+import { classNames, type Mods } from 'shared/lib/classNames/classNames'
+import { useTheme } from 'shared/lib/hooks/useTheme'
 import { Portal } from 'shared/ui/Portal/Portal'
 import cls from './Modal.module.scss'
-import { useTheme } from 'shared/lib/hooks/useTheme'
 
 interface ModalProps {
   className?: string
@@ -62,7 +62,9 @@ export const Modal = (props: ModalProps) => {
     }
 
     return () => {
-      clearTimeout(timerRef.current)
+      if(timerRef.current) {
+        clearTimeout(timerRef.current)
+      }
       window.removeEventListener('keydown', onKeyDown)
     }
   }, [onKeyDown, isOpen])

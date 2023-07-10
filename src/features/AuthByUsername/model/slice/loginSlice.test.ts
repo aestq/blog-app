@@ -1,6 +1,6 @@
 import { type DeepPartial } from '@reduxjs/toolkit'
-import { loginActions, loginReducer } from './loginSlice'
 import { type LoginSchema } from '../types/loginSchema'
+import { loginActions, loginReducer } from './loginSlice'
 
 describe('loginSlice', () => {
   test('setUsername', () => {

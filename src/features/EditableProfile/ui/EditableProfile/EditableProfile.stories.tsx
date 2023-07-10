@@ -1,8 +1,8 @@
 import { type ComponentMeta, type ComponentStory } from '@storybook/react'
-import { EditableProfile } from './EditableProfile'
+import { StoreDecorator } from 'shared/config/storybook/StoreDecorator'
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator'
 import { Theme } from 'shared/lib/context/ThemeContext'
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator'
+import { EditableProfile } from './EditableProfile'
 
 export default {
   title: 'features/EditableProfile',

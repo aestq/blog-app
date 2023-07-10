@@ -1,8 +1,8 @@
 import { type ComponentMeta, type ComponentStory } from '@storybook/react'
-import { ProfileCard } from './ProfileCard'
+import { StoreDecorator } from 'shared/config/storybook/StoreDecorator'
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator'
 import { Theme } from 'shared/lib/context/ThemeContext'
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator'
+import { ProfileCard } from './ProfileCard'
 
 export default {
   title: 'entities/ProfileCard',

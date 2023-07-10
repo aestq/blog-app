@@ -1,8 +1,8 @@
-import { classNames } from 'shared/lib/classNames/classNames'
-import cls from './EditableProfileHeader.module.scss'
 import { useTranslation } from 'react-i18next'
-import { Text } from 'shared/ui/Text/Text'
+import { classNames } from 'shared/lib/classNames/classNames'
 import { Button, ButtonTheme } from 'shared/ui/Button/Button'
+import { Text } from 'shared/ui/Text/Text'
+import cls from './EditableProfileHeader.module.scss'
 
 interface EditableProfileHeaderProps {
   className?: string

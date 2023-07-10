@@ -1,7 +1,7 @@
 import { type ComponentMeta, type ComponentStory } from '@storybook/react'
-import MainPage from './MainPage'
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator'
 import { Theme } from 'shared/lib/context/ThemeContext'
+import MainPage from './MainPage'
 
 export default {
   title: 'pages/MainPage',
@@ -11,7 +11,7 @@ export default {
   }
 } as ComponentMeta<typeof MainPage>
 
-const Template: ComponentStory<typeof MainPage> = (args) => <MainPage {...args} />
+const Template: ComponentStory<typeof MainPage> = (args) => <MainPage />
 
 export const Light = Template.bind({})
 Light.args = {}

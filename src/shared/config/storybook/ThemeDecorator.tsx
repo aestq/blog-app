@@ -1,6 +1,6 @@
+import { type Story } from '@storybook/react'
 import { ThemeProvider } from 'app/providers/ThemeProvider'
 import { type Theme } from 'shared/lib/context/ThemeContext'
-import { type Story } from '@storybook/react'
 
 export const ThemeDecorator = (theme: Theme) => (StoryComponent: Story) => (
   <ThemeProvider initialTheme={theme}>

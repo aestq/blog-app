@@ -1,10 +1,10 @@
+import { type EnhancedStore, type Reducer, type ReducersMapObject } from '@reduxjs/toolkit'
+import { type AxiosInstance } from 'axios'
+import { type AnyAction, type CombinedState } from 'redux'
+import { type LoginSchema } from 'features/AuthByUsername'
+import { type EditableProfileSchema } from 'features/EditableProfile'
 import { type CounterSchema } from 'entities/Counter'
 import { type UserSchema } from 'entities/User'
-import { type LoginSchema } from 'features/AuthByUsername'
-import { type EnhancedStore, type Reducer, type ReducersMapObject } from '@reduxjs/toolkit'
-import { type AnyAction, type CombinedState } from 'redux'
-import { type EditableProfileSchema } from 'features/EditableProfile'
-import { type AxiosInstance } from 'axios'
 
 export interface StateSchema {
   counter: CounterSchema
@@ -35,4 +35,5 @@ interface ThunkExtraArgs {
 export interface ThunkConfig<T> {
   extra: ThunkExtraArgs
   rejectValue: T
+  state: StateSchema
 }

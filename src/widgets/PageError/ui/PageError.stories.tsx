@@ -1,7 +1,7 @@
 import { type ComponentMeta, type ComponentStory } from '@storybook/react'
-import { PageError } from './PageError'
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator'
 import { Theme } from 'shared/lib/context/ThemeContext'
+import { PageError } from './PageError'
 
 export default {
   title: 'widgets/PageError',
@@ -11,7 +11,7 @@ export default {
   }
 } as ComponentMeta<typeof PageError>
 
-const Template: ComponentStory<typeof PageError> = (args) => <PageError {...args} />
+const Template: ComponentStory<typeof PageError> = (args) => <PageError />
 
 export const Light = Template.bind({})
 Light.args = {}

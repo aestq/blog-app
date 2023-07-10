@@ -1,5 +1,5 @@
-import { classNames, type Mods } from 'shared/lib/classNames/classNames'
 import { type ButtonHTMLAttributes, type ReactNode } from 'react'
+import { type Additional, classNames, type Mods } from 'shared/lib/classNames/classNames'
 import cls from './Button.module.scss'
 
 export enum ButtonTheme {
@@ -38,7 +38,7 @@ export const Button = (props: ButtonProps) => {
     [cls.square]: square
   }
 
-  const additional: string[] = [
+  const additional: Additional = [
     className,
     cls[theme],
     cls[size]

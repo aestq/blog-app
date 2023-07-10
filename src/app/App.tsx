@@ -1,11 +1,11 @@
+import { Suspense, useEffect } from 'react'
 import { Navbar } from 'widgets/Navbar'
 import { Sidebar } from 'widgets/Sidebar'
-import { AppRouter } from './providers/Router'
-import { Suspense, useEffect } from 'react'
-import { classNames } from 'shared/lib/classNames/classNames'
-import { useTheme } from 'shared/lib/hooks/useTheme'
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch'
 import { userActions } from 'entities/User'
+import { classNames } from 'shared/lib/classNames/classNames'
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch'
+import { useTheme } from 'shared/lib/hooks/useTheme'
+import { AppRouter } from './providers/Router'
 
 const App = () => {
   const { theme } = useTheme()

@@ -1,11 +1,11 @@
+import { type ReducersMapObject } from '@reduxjs/toolkit'
 import { type Story } from '@storybook/react'
 import { type StateSchema, StoreProvider } from 'app/providers/StoreProvider'
-import { type DeepPartial } from 'redux'
-import { type ReducersMapObject } from '@reduxjs/toolkit'
 import { loginReducer } from 'features/AuthByUsername/model/slice/loginSlice'
 import { editableProfileReducer } from 'features/EditableProfile/model/slice/EditableProfileSlice'
+import { type ReducersList } from 'shared/lib/hooks/useReducersLoader'
 
-const defaultReducers: DeepPartial<ReducersMapObject<StateSchema>> = {
+const defaultReducers: ReducersList = {
   loginForm: loginReducer,
   editableProfile: editableProfileReducer
 }

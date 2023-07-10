@@ -1,8 +1,8 @@
-import { classNames } from 'shared/lib/classNames/classNames'
-import cls from './ProfileCard.module.scss'
 import { useTranslation } from 'react-i18next'
-import { Input } from 'shared/ui/Input/Input'
 import { type Profile } from 'entities/Profile'
+import { classNames } from 'shared/lib/classNames/classNames'
+import { Input } from 'shared/ui/Input/Input'
+import cls from './ProfileCard.module.scss'
 
 interface ProfileCardProps {
   className?: string
