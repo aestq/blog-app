@@ -1,5 +1,4 @@
 import { type ComponentMeta, type ComponentStory } from '@storybook/react'
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator'
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator'
 import { Theme } from 'shared/lib/context/ThemeContext'
 import { ProfileCard } from './ProfileCard'
@@ -16,8 +15,22 @@ const Template: ComponentStory<typeof ProfileCard> = (args) => <ProfileCard {...
 
 export const Light = Template.bind({})
 Light.args = {}
-Light.decorators = [StoreDecorator({})]
 
 export const Dark = Template.bind({})
 Dark.args = {}
-Dark.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({})]
+Dark.decorators = [ThemeDecorator(Theme.DARK)]
+
+export const Loading = Template.bind({})
+Loading.args = {
+  isLoading: true
+}
+
+export const Error = Template.bind({})
+Error.args = {
+  error: 'error'
+}
+
+export const ReadOnly = Template.bind({})
+ReadOnly.args = {
+  readonly: true
+}

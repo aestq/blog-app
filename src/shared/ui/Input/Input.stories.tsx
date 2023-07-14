@@ -23,3 +23,9 @@ Dark.args = {
   placeholder: 'placeholder'
 }
 Dark.decorators = [ThemeDecorator(Theme.DARK)]
+
+export const ReadOnly = Template.bind({})
+Light.args = {
+  placeholder: 'placeholder',
+  readOnly: true
+}

@@ -24,9 +24,9 @@ Light.decorators = [StoreDecorator({
   }
 })]
 
-export const WithError = Template.bind({})
-WithError.args = {}
-WithError.decorators = [StoreDecorator({
+export const Error = Template.bind({})
+Error.args = {}
+Error.decorators = [StoreDecorator({
   loginForm: {
     username: 'admin',
     password: '123',
