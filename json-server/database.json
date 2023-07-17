@@ -9,7 +9,7 @@
   "profiles": {
     "firstName": "Петя",
     "lastName": "Петров",
-    "age": 18,
+    "age": 20,
     "currency": "RUB",
     "country": "Russia",
     "city": "Москва",

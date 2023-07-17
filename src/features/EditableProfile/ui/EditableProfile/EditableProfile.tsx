@@ -1,15 +1,19 @@
-import { useCallback, useEffect } from 'react'
+import { memo, useCallback, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
+import { ValidateProfileError } from 'features/EditableProfile/model/types/EditableProfileSchema'
 import { type Country } from 'entities/Country'
 import { type Currency } from 'entities/Currency'
 import { ProfileCard } from 'entities/Profile'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch'
-import { useReducersLoader, type ReducersList } from 'shared/lib/hooks/useReducersLoader'
+import { type ReducersList, useReducersLoader } from 'shared/lib/hooks/useReducersLoader'
+import { Text, TextTheme } from 'shared/ui/Text/Text'
 import { getProfileError } from '../../model/selectors/getProfileError/getProfileError'
 import { getProfileForm } from '../../model/selectors/getProfileForm/getProfileForm'
 import { getProfileIsLoading } from '../../model/selectors/getProfileIsLoading/getProfileIsLoading'
 import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly'
+import { getProfileValidateErrors } from '../../model/selectors/getProfileValidateErrors/getProfileValidateErrors'
 import { fetchProfileData } from '../../model/services/fetchProfileData'
 import { editableProfileActions, editableProfileReducer } from '../../model/slice/editableProfileSlice'
 import { EditableProfileHeader } from '../EditableProfileHeader/EditableProfileHeader'
@@ -23,14 +27,24 @@ interface EditableProfileProps {
   className?: string
 }
 
-export const EditableProfile = (props: EditableProfileProps) => {
+export const EditableProfile = memo((props: EditableProfileProps) => {
   useReducersLoader({ reducersList })
   const { className } = props
+  const { t } = useTranslation('profile')
   const dispatch = useAppDispatch()
   const formData = useSelector(getProfileForm)
   const readonly = useSelector(getProfileReadonly)
   const isLoading = useSelector(getProfileIsLoading)
   const error = useSelector(getProfileError)
+  const validateErrors = useSelector(getProfileValidateErrors)
+
+  const validateErrorsTranslates = {
+    [ValidateProfileError.SERVER_ERROR]: t('Произошла ошибка сервера'),
+    [ValidateProfileError.INCORRECT_COUNTRY]: t('Некорректная страна'),
+    [ValidateProfileError.INCORRECT_AGE]: t('Некорректный возраст'),
+    [ValidateProfileError.INCORRECT_USER_DATA]: t('Некорректное имя и фамилия'),
+    [ValidateProfileError.NO_DATA]: t('Нет данных')
+  }
 
   useEffect(() => {
     dispatch(fetchProfileData())
@@ -45,8 +59,9 @@ export const EditableProfile = (props: EditableProfileProps) => {
   }, [dispatch])
 
   const onChangeAge = useCallback((value: string) => {
-    /* TODO Сделать валидацию */
-    dispatch(editableProfileActions.updateForm({ age: Number(value) }))
+    if(/^\d+$/.test(value) || value === '') {
+      dispatch(editableProfileActions.updateForm({ age: Number(value) }))
+    }
   }, [dispatch])
 
   const onChangeCity = useCallback((value: string) => {
@@ -72,6 +87,13 @@ export const EditableProfile = (props: EditableProfileProps) => {
   return (
     <div className={classNames(cls.EditableProfile, {}, [className])}>
       <EditableProfileHeader />
+      {validateErrors?.length && validateErrors.map((error) => (
+        <Text
+          text={validateErrorsTranslates[error]}
+          theme={TextTheme.ERROR}
+          key={error}
+        />
+      ))}
       <ProfileCard
         data={formData}
         isLoading={isLoading}
@@ -88,4 +110,4 @@ export const EditableProfile = (props: EditableProfileProps) => {
       />
     </div>
   )
-}
+})
