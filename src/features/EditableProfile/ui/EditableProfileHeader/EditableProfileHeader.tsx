@@ -6,7 +6,7 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch'
 import { Button, ButtonTheme } from 'shared/ui/Button/Button'
 import { Text } from 'shared/ui/Text/Text'
 import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly'
-import { updateProfileData } from '../../model/services/updateProfileData'
+import { updateProfileData } from '../../model/services/updateProfileData/updateProfileData'
 import { editableProfileActions } from '../../model/slice/editableProfileSlice'
 import cls from './EditableProfileHeader.module.scss'
 

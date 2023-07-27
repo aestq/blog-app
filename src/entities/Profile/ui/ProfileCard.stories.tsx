@@ -1,4 +1,7 @@
 import { type ComponentMeta, type ComponentStory } from '@storybook/react'
+import { Country } from 'entities/Country'
+import { Currency } from 'entities/Currency'
+import AvatarImg from 'shared/assets/tests/avatar.png'
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator'
 import { Theme } from 'shared/lib/context/ThemeContext'
 import { ProfileCard } from './ProfileCard'
@@ -14,7 +17,18 @@ export default {
 const Template: ComponentStory<typeof ProfileCard> = (args) => <ProfileCard {...args} />
 
 export const Light = Template.bind({})
-Light.args = {}
+Light.args = {
+  data: {
+    avatar: AvatarImg,
+    firstName: 'asdf',
+    lastName: 'msnhjd',
+    age: 20,
+    country: Country.RUSSIA,
+    username: 'user',
+    currency: Currency.RUB,
+    city: 'Moscow'
+  }
+}
 
 export const Dark = Template.bind({})
 Dark.args = {}

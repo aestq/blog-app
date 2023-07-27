@@ -1,4 +1,4 @@
-import { memo, useCallback, useEffect } from 'react'
+import { memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import { ValidateProfileError } from 'features/EditableProfile/model/types/EditableProfileSchema'
@@ -7,6 +7,7 @@ import { type Currency } from 'entities/Currency'
 import { ProfileCard } from 'entities/Profile'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch'
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect'
 import { type ReducersList, useReducersLoader } from 'shared/lib/hooks/useReducersLoader'
 import { Text, TextTheme } from 'shared/ui/Text/Text'
 import { getProfileError } from '../../model/selectors/getProfileError/getProfileError'
@@ -14,7 +15,7 @@ import { getProfileForm } from '../../model/selectors/getProfileForm/getProfileF
 import { getProfileIsLoading } from '../../model/selectors/getProfileIsLoading/getProfileIsLoading'
 import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly'
 import { getProfileValidateErrors } from '../../model/selectors/getProfileValidateErrors/getProfileValidateErrors'
-import { fetchProfileData } from '../../model/services/fetchProfileData'
+import { fetchProfileData } from '../../model/services/fetchProfileData/fetchProfileData'
 import { editableProfileActions, editableProfileReducer } from '../../model/slice/editableProfileSlice'
 import { EditableProfileHeader } from '../EditableProfileHeader/EditableProfileHeader'
 import cls from './EditableProfile.module.scss'
@@ -46,9 +47,9 @@ export const EditableProfile = memo((props: EditableProfileProps) => {
     [ValidateProfileError.NO_DATA]: t('Нет данных')
   }
 
-  useEffect(() => {
+  useInitialEffect(() => {
     dispatch(fetchProfileData())
-  }, [dispatch])
+  })
 
   const onChangeFirstName = useCallback((value: string) => {
     dispatch(editableProfileActions.updateForm({ firstName: value }))
@@ -87,7 +88,7 @@ export const EditableProfile = memo((props: EditableProfileProps) => {
   return (
     <div className={classNames(cls.EditableProfile, {}, [className])}>
       <EditableProfileHeader />
-      {validateErrors?.length && validateErrors.map((error) => (
+      {validateErrors?.map((error) => (
         <Text
           text={validateErrorsTranslates[error]}
           theme={TextTheme.ERROR}
