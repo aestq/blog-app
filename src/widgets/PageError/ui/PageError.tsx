@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import { Button, ButtonTheme } from 'shared/ui/Button/Button'
+import { Button } from 'shared/ui/Button/Button'
 import cls from './PageError.module.scss'
 
 export const PageError = () => {
@@ -13,7 +13,7 @@ export const PageError = () => {
     <div className={cls.PageError}>
       <p>{t('Произошла ошибка')}</p>
       <Button
-        theme={ButtonTheme.OUTLINE}
+        theme='outline'
         onClick={reloadPage}
       >
         {t('Обновить страницу')}

@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { type SidebarItemType } from 'widgets/Sidebar/model/items'
 import { getUserAuthData } from 'entities/User'
 import { classNames, type Mods } from 'shared/lib/classNames/classNames'
-import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink'
+import { AppLink } from 'shared/ui/AppLink/AppLink'
 import cls from './SidebarItem.module.scss'
 
 interface SidebarItemProps {
@@ -27,7 +27,7 @@ export const SidebarItem = memo((props: SidebarItemProps) => {
 
   return (
     <AppLink
-      theme={AppLinkTheme.SECONDARY}
+      theme='secondary'
       to={item.path}
       className={classNames(cls.SidebarItem, mods)}
     >

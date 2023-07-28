@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { LoginModal } from 'features/AuthByUsername'
 import { getUserAuthData, userActions } from 'entities/User'
 import { classNames } from 'shared/lib/classNames/classNames'
-import { Button, ButtonTheme } from 'shared/ui/Button/Button'
+import { Button } from 'shared/ui/Button/Button'
 import cls from './Navbar.module.scss'
 
 interface NavbarProps {
@@ -35,7 +35,7 @@ export const Navbar = memo((props: NavbarProps) => {
       <div className={classNames(cls.Navbar, {}, [className])}>
         <Button
           onClick={onLogout}
-          theme={ButtonTheme.CLEAR_INVERTED}
+          theme='clearInverted'
         >
           {t('Выйти')}
         </Button>
@@ -47,7 +47,7 @@ export const Navbar = memo((props: NavbarProps) => {
     <div className={classNames(cls.Navbar, {}, [className])}>
       <Button
         onClick={onOpenModal}
-        theme={ButtonTheme.CLEAR_INVERTED}
+        theme='clearInverted'
       >
         {t('Войти')}
       </Button>

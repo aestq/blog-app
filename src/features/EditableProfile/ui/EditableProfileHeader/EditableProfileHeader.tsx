@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch'
-import { Button, ButtonTheme } from 'shared/ui/Button/Button'
+import { Button } from 'shared/ui/Button/Button'
 import { Text } from 'shared/ui/Text/Text'
 import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly'
 import { updateProfileData } from '../../model/services/updateProfileData/updateProfileData'
@@ -39,7 +39,7 @@ export const EditableProfileHeader = (props: EditableProfileHeaderProps) => {
         ? (
           <Button
             className={cls.editButton}
-            theme={ButtonTheme.OUTLINE}
+            theme='outline'
             onClick={onClickEdit}
           >
             {t('Редактировать')}
@@ -49,13 +49,13 @@ export const EditableProfileHeader = (props: EditableProfileHeaderProps) => {
           <>
             <Button
               className={cls.cancelButton}
-              theme={ButtonTheme.OUTLINE_RED}
+              theme='outlineRed'
               onClick={onClickCancel}
             >
               {t('Отменить')}
             </Button>
             <Button
-              theme={ButtonTheme.OUTLINE}
+              theme='outline'
               onClick={onClickSave}
             >
               {t('Сохранить')}

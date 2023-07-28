@@ -1,7 +1,7 @@
 import { type ComponentMeta, type ComponentStory } from '@storybook/react'
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator'
 import { Theme } from 'shared/lib/context/ThemeContext'
-import { Text, TextAlign, TextTheme } from './Text'
+import { Text } from './Text'
 
 export default {
   title: 'shared/Text',
@@ -23,21 +23,21 @@ export const AlignRight = Template.bind({})
 AlignRight.args = {
   title: 'Какой-либо заголовок',
   text: 'Какой-либо текст',
-  align: TextAlign.RIGHT
+  align: 'right'
 }
 
 export const AlignCenter = Template.bind({})
 AlignCenter.args = {
   title: 'Какой-либо заголовок',
   text: 'Какой-либо текст',
-  align: TextAlign.CENTER
+  align: 'center'
 }
 
 export const Error = Template.bind({})
 Error.args = {
   title: 'Какой-либо заголовок',
   text: 'Какой-либо текст',
-  theme: TextTheme.ERROR
+  theme: 'error'
 }
 
 export const OnlyTitle = Template.bind({})

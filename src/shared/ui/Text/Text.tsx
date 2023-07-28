@@ -2,16 +2,8 @@ import { memo } from 'react'
 import { type Additional, classNames } from 'shared/lib/classNames/classNames'
 import cls from './Text.module.scss'
 
-export enum TextTheme {
-  PRIMARY = 'primary',
-  ERROR = 'error'
-}
-
-export enum TextAlign {
-  LEFT = 'left',
-  CENTER = 'center',
-  RIGHT = 'right'
-}
+type TextTheme = 'primary' | 'error'
+type TextAlign = 'left' | 'center' | 'right'
 
 interface TextProps {
   className?: string
@@ -26,8 +18,8 @@ export const Text = memo((props: TextProps) => {
     className,
     title,
     text,
-    theme = TextTheme.PRIMARY,
-    align = TextAlign.LEFT
+    theme = 'primary',
+    align = 'left'
   } = props
 
   const additional: Additional = [

@@ -4,9 +4,9 @@ import { useSelector } from 'react-redux'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch'
 import { useReducersLoader, type ReducersList } from 'shared/lib/hooks/useReducersLoader'
-import { Button, ButtonTheme } from 'shared/ui/Button/Button'
+import { Button } from 'shared/ui/Button/Button'
 import { Input } from 'shared/ui/Input/Input'
-import { Text, TextTheme } from 'shared/ui/Text/Text'
+import { Text } from 'shared/ui/Text/Text'
 import { getLoginError } from '../../model/selectors/getLoginError/getLoginError'
 import { getLoginIsLoading } from '../../model/selectors/getLoginIsLoading/getLoginIsLoading'
 import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLoginPassword'
@@ -52,7 +52,7 @@ const LoginForm = memo((props: LoginFormProps) => {
   return (
     <div className={classNames(cls.LoginForm, {}, [className])}>
       <Text title={t('Форма авторизации')}/>
-      {error && <Text text={t(error)} theme={TextTheme.ERROR} />}
+      {error && <Text text={t(error)} theme='error' />}
       <Input
         className={cls.input}
         placeholder={t('Введите username')}
@@ -68,7 +68,7 @@ const LoginForm = memo((props: LoginFormProps) => {
       />
       <Button
         className={cls.loginButton}
-        theme={ButtonTheme.OUTLINE}
+        theme='outline'
         onClick={onClickLogin}
         disabled={isLoading}
       >

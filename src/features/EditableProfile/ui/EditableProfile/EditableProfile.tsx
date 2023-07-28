@@ -9,7 +9,7 @@ import { classNames } from 'shared/lib/classNames/classNames'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch'
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect'
 import { type ReducersList, useReducersLoader } from 'shared/lib/hooks/useReducersLoader'
-import { Text, TextTheme } from 'shared/ui/Text/Text'
+import { Text } from 'shared/ui/Text/Text'
 import { getProfileError } from '../../model/selectors/getProfileError/getProfileError'
 import { getProfileForm } from '../../model/selectors/getProfileForm/getProfileForm'
 import { getProfileIsLoading } from '../../model/selectors/getProfileIsLoading/getProfileIsLoading'
@@ -91,7 +91,7 @@ export const EditableProfile = memo((props: EditableProfileProps) => {
       {validateErrors?.map((error) => (
         <Text
           text={validateErrorsTranslates[error]}
-          theme={TextTheme.ERROR}
+          theme='error'
           key={error}
         />
       ))}

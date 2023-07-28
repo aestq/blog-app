@@ -6,7 +6,7 @@ import { classNames, type Mods } from 'shared/lib/classNames/classNames'
 import { Avatar } from 'shared/ui/Avatar/Avatar'
 import { Input } from 'shared/ui/Input/Input'
 import { Loader } from 'shared/ui/Loader/Loader'
-import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text'
+import { Text } from 'shared/ui/Text/Text'
 import cls from './ProfileCard.module.scss'
 
 interface ProfileCardProps {
@@ -55,10 +55,10 @@ export const ProfileCard = (props: ProfileCardProps) => {
     return (
       <div className={classNames(cls.ProfileCard, {}, [className, cls.error])}>
         <Text
-          theme={TextTheme.ERROR}
+          theme='error'
           title={t('Произошла ошибка при загрузке профиля')}
           text={t('Попробуйте обновить страницу')}
-          align={TextAlign.CENTER}
+          align='center'
         />
       </div>
     )
