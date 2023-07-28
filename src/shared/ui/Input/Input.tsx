@@ -18,6 +18,7 @@ export const Input = memo((props: InputProps) => {
     value,
     type = 'text',
     readOnly,
+    placeholder,
     ...otherProps
   } = props
 
@@ -30,13 +31,16 @@ export const Input = memo((props: InputProps) => {
   }
 
   return (
-    <input
-      className={classNames(cls.Input, mods, [className])}
-      value={value}
-      type={type}
-      onChange={onChangeHandler}
-      readOnly={readOnly}
-      {...otherProps}
-    />
+    <label className={classNames(cls.wrapper, mods, [className])}>
+      {placeholder && placeholder + '>'}
+      <input
+        className={cls.Input}
+        value={value}
+        type={type}
+        onChange={onChangeHandler}
+        readOnly={readOnly}
+        {...otherProps}
+      />
+    </label>
   )
 })
