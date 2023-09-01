@@ -2,7 +2,7 @@ import { type RuleSetRule } from 'webpack'
 import { buildCssLoader } from './loaders/buildCssLoader'
 import { type BuildOptions } from './types/config'
 
-export function buildLoaders ({ isDev }: BuildOptions): RuleSetRule[] {
+export function buildLoaders({ isDev }: BuildOptions): RuleSetRule[] {
   const svgLoader = {
     test: /\.svg$/i,
     issuer: /\.[jt]sx?$/,
@@ -24,7 +24,10 @@ export function buildLoaders ({ isDev }: BuildOptions): RuleSetRule[] {
     use: {
       loader: 'babel-loader',
       options: {
-        presets: ['@babel/preset-env']
+        presets: ['@babel/preset-env'],
+        plugins: [
+          isDev && require.resolve('react-refresh/babel')
+        ].filter(Boolean)
       }
     }
   }
