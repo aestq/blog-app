@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import { EditableProfile } from 'features/EditableProfile'
 import cls from './ProfilePage.module.scss'
 
@@ -9,4 +10,4 @@ const ProfilePage = () => {
   )
 }
 
-export default ProfilePage
+export default memo(ProfilePage)
