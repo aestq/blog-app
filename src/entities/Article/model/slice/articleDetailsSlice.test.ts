@@ -1,20 +1,10 @@
-import { type ComponentMeta, type ComponentStory } from '@storybook/react'
-import { type Article, ArticleBlockType, ArticleType } from 'entities/Article'
+import { type DeepPartial } from '@reduxjs/toolkit'
+import { type ArticleDetailsSchema } from 'entities/Article'
+import { fetchArticleById } from 'entities/Article/model/services/fetchArticleById/fetchArticleById'
+import { articleDetailsReducer } from 'entities/Article/model/slice/articleDetailsSlice'
+import { type Article, ArticleBlockType, ArticleType } from '../types/acticle'
 
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator'
-import ArticleDetailsPage from './ArticleDetailsPage'
-
-export default {
-  title: 'pages/ArticleDetailsPage',
-  component: ArticleDetailsPage,
-  argTypes: {
-    backgroundColor: { control: 'color' }
-  }
-} as ComponentMeta<typeof ArticleDetailsPage>
-
-const Template: ComponentStory<typeof ArticleDetailsPage> = (args) => <ArticleDetailsPage {...args} />
-
-const data: Article = {
+const articleData: Article = {
   id: '1',
   title: 'Javascript news',
   subtitle: 'Что нового в JS за 2022 год?',
@@ -32,25 +22,47 @@ const data: Article = {
         'JavaScript — это язык, программы на котором можно выполнять в разных средах. В нашем случае речь идёт о браузерах и о серверной платформе Node.js. Если до сих пор вы не написали ни строчки кода на JS и читаете этот текст в браузере, на настольном компьютере, это значит, что вы буквально в считанных секундах от своей первой JavaScript-программы.',
         'Существуют и другие способы запуска JS-кода в браузере. Так, если говорить об обычном использовании программ на JavaScript, они загружаются в браузер для обеспечения работы веб-страниц. Как правило, код оформляют в виде отдельных файлов с расширением .js, которые подключают к веб-страницам, но программный код можно включать и непосредственно в код страницы. Всё это делается с помощью тега <script>. Когда браузер обнаруживает такой код, он выполняет его. Подробности о теге script можно посмотреть на сайте w3school.com. В частности, рассмотрим пример, демонстрирующий работу с веб-страницей средствами JavaScript, приведённый на этом ресурсе. Этот пример можно запустить и средствами данного ресурса (ищите кнопку Try it Yourself), но мы поступим немного иначе. А именно, создадим в каком-нибудь текстовом редакторе (например — в VS Code или в Notepad++) новый файл, который назовём hello.html, и добавим в него следующий код:'
       ]
-    },
-    {
-      id: '2',
-      type: ArticleBlockType.CODE,
-      code: '<!DOCTYPE html>\n<html>\n  <body>\n    <p id="hello"></p>\n\n    <script>\n      document.getElementById("hello").innerHTML = "Hello, world!";\n    </script>\n  </body>\n</html>;'
-    },
-    {
-      id: '4',
-      type: ArticleBlockType.IMAGE,
-      src: 'https://hsto.org/r/w1560/getpro/habr/post_images/d56/a02/ffc/d56a02ffc62949b42904ca00c63d8cc1.png',
-      title: 'Рисунок 1 - скриншот сайта'
     }
   ]
 }
 
-export const Default = Template.bind({})
-Default.args = {}
-Default.decorators = [StoreDecorator({
-  articleDetails: {
-    data
-  }
-})]
+describe('articleDetailsSlice', () => {
+  test('fetch article service pending', () => {
+    const state: DeepPartial<ArticleDetailsSchema> = {
+      isLoading: false,
+      error: 'error'
+    }
+    expect(articleDetailsReducer(
+      state as ArticleDetailsSchema,
+      fetchArticleById.pending
+    )).toEqual({ isLoading: true, error: undefined })
+  })
+
+  test('fetch article service fulfilled', () => {
+    const state: DeepPartial<ArticleDetailsSchema> = {
+      isLoading: true,
+      data: undefined
+    }
+    expect(articleDetailsReducer(
+      state as ArticleDetailsSchema,
+      fetchArticleById.fulfilled(articleData, '', '')
+    )).toEqual({
+      isLoading: false,
+      data: articleData
+    })
+  })
+
+  test('fetch article service rejected', () => {
+    const state: DeepPartial<ArticleDetailsSchema> = {
+      isLoading: true,
+      error: undefined
+    }
+    expect(articleDetailsReducer(
+      state as ArticleDetailsSchema,
+      fetchArticleById.rejected(new Error('error'), '', '', 'error-message')
+    )).toEqual({
+      isLoading: false,
+      error: 'error-message'
+    })
+  })
+})

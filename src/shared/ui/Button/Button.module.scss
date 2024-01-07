@@ -5,6 +5,11 @@
   border: none;
   padding: 6px 15px;
   border-radius: var(--radius-button);
+  transition: opacity .2s;
+
+  &:hover {
+    opacity: 0.8;
+  }
 
   &:disabled {
     opacity: 0.5;

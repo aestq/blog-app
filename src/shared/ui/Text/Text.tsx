@@ -4,6 +4,7 @@ import cls from './Text.module.scss'
 
 type TextTheme = 'primary' | 'error'
 type TextAlign = 'left' | 'center' | 'right'
+type TextSize = 's' | 'm'
 
 interface TextProps {
   className?: string
@@ -11,6 +12,7 @@ interface TextProps {
   text?: string
   theme?: TextTheme
   align?: TextAlign
+  size?: TextSize
 }
 
 export const Text = memo((props: TextProps) => {
@@ -19,13 +21,15 @@ export const Text = memo((props: TextProps) => {
     title,
     text,
     theme = 'primary',
-    align = 'left'
+    align = 'left',
+    size = 's'
   } = props
 
   const additional: Additional = [
     className,
     cls[theme],
-    cls[align]
+    cls[align],
+    cls[size]
   ]
 
   return (

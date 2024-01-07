@@ -3,6 +3,7 @@ import { type AxiosInstance } from 'axios'
 import { type AnyAction, type CombinedState } from 'redux'
 import { type LoginSchema } from 'features/AuthByUsername'
 import { type EditableProfileSchema } from 'features/EditableProfile'
+import { type ArticleDetailsSchema } from 'entities/Article'
 import { type CounterSchema } from 'entities/Counter'
 import { type UserSchema } from 'entities/User'
 
@@ -13,6 +14,7 @@ export interface StateSchema {
   // Асинхронные Reducers
   loginForm?: LoginSchema
   editableProfile?: EditableProfileSchema
+  articleDetails?: ArticleDetailsSchema
 }
 
 export type StateSchemaKey = keyof StateSchema

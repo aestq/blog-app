@@ -64,7 +64,8 @@ module.exports = {
     'react/display-name': 'off',
     '@typescript-eslint/no-misused-promises': 'off',
     '@typescript-eslint/no-invalid-void-type': 'off',
-    '@typescript-eslint/no-non-null-assertion': 'warn'
+    '@typescript-eslint/no-non-null-assertion': 'warn',
+    '@typescript-eslint/no-redeclare': 'off'
   },
   globals: {
     __IS_DEV__: true,

@@ -68,3 +68,10 @@ OnlyTextDark.args = {
   text: 'Какой-либо текст'
 }
 OnlyTextDark.decorators = [ThemeDecorator(Theme.DARK)]
+
+export const SizeM = Template.bind({})
+SizeM.args = {
+  title: 'Какой-либо заголовок',
+  text: 'Какой-либо текст',
+  size: 'm'
+}
