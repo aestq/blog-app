@@ -14,7 +14,7 @@ export const Skeleton = (props: SkeletonProps) => {
     className,
     height = 100,
     width = 200,
-    radius = 10
+    radius = 5
   } = props
 
   const styles: CSSProperties = {

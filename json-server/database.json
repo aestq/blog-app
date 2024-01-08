@@ -3,7 +3,14 @@
     {
       "id": 1,
       "username": "admin",
-      "password": "123"
+      "password": "123",
+      "avatar": "https://cdn-icons-png.flaticon.com/512/552/552721.png"
+    },
+    {
+      "id": 2,
+      "username": "Petrov",
+      "password": "123",
+      "avatar": "https://cdn-icons-png.flaticon.com/512/552/552721.png"
     }
   ],
   "profiles": {
