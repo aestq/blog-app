@@ -26,11 +26,12 @@ const reducersList: ReducersList = {
 
 interface EditableProfileProps {
   className?: string
+  id: string
 }
 
 export const EditableProfile = memo((props: EditableProfileProps) => {
   useReducersLoader({ reducersList })
-  const { className } = props
+  const { className, id } = props
   const { t } = useTranslation('profile')
   const dispatch = useAppDispatch()
   const formData = useSelector(getProfileForm)
@@ -48,7 +49,7 @@ export const EditableProfile = memo((props: EditableProfileProps) => {
   }
 
   useInitialEffect(() => {
-    dispatch(fetchProfileData())
+    dispatch(fetchProfileData(id))
   })
 
   const onChangeFirstName = useCallback((value: string) => {

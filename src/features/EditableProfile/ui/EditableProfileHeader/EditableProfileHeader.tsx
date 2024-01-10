@@ -5,6 +5,7 @@ import { classNames } from 'shared/lib/classNames/classNames'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch'
 import { Button } from 'shared/ui/Button/Button'
 import { Text } from 'shared/ui/Text/Text'
+import { getCanEditProfile } from '../../model/selectors/getCanEditProfile/getCanEditProfile'
 import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly'
 import { updateProfileData } from '../../model/services/updateProfileData/updateProfileData'
 import { editableProfileActions } from '../../model/slice/editableProfileSlice'
@@ -19,6 +20,7 @@ export const EditableProfileHeader = (props: EditableProfileHeaderProps) => {
   const { t } = useTranslation('profile')
   const readonly = useSelector(getProfileReadonly)
   const dispatch = useAppDispatch()
+  const isCanEdit = useSelector(getCanEditProfile)
 
   const onClickEdit = useCallback(() => {
     dispatch(editableProfileActions.setReadonly(false))
@@ -35,34 +37,38 @@ export const EditableProfileHeader = (props: EditableProfileHeaderProps) => {
   return (
     <header className={classNames(cls.EditableProfileHeader, {}, [className])}>
       <Text title={t('Профиль')} />
-      {readonly
-        ? (
-          <Button
-            className={cls.editButton}
-            theme='outline'
-            onClick={onClickEdit}
-          >
-            {t('Редактировать')}
-          </Button>
-          )
-        : (
-          <>
-            <Button
-              className={cls.cancelButton}
-              theme='outlineRed'
-              onClick={onClickCancel}
-            >
-              {t('Отменить')}
-            </Button>
-            <Button
-              theme='outline'
-              onClick={onClickSave}
-            >
-              {t('Сохранить')}
-            </Button>
-          </>
-          )
-      }
+      {isCanEdit && (
+        <>
+          {readonly
+            ? (
+              <Button
+                className={cls.editButton}
+                theme='outline'
+                onClick={onClickEdit}
+              >
+                {t('Редактировать')}
+              </Button>
+              )
+            : (
+              <>
+                <Button
+                  className={cls.cancelButton}
+                  theme='outlineRed'
+                  onClick={onClickCancel}
+                >
+                  {t('Отменить')}
+                </Button>
+                <Button
+                  theme='outline'
+                  onClick={onClickSave}
+                >
+                  {t('Сохранить')}
+                </Button>
+              </>
+              )
+          }
+        </>
+      )}
     </header>
   )
 }

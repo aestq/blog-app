@@ -1,28 +1,42 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "username": "admin",
       "password": "123",
       "avatar": "https://cdn-icons-png.flaticon.com/512/552/552721.png"
     },
     {
-      "id": 2,
+      "id": "2",
       "username": "Petrov",
       "password": "123",
       "avatar": "https://cdn-icons-png.flaticon.com/512/552/552721.png"
     }
   ],
-  "profiles": {
-    "firstName": "Петя",
-    "lastName": "Петров",
-    "age": 20,
-    "currency": "RUB",
-    "country": "Russia",
-    "city": "Москва",
-    "username": "admin",
-    "avatar": "https://cdn-icons-png.flaticon.com/512/552/552721.png"
-  },
+  "profiles": [
+    {
+      "id": "1",
+      "firstName": "Петя",
+      "lastName": "Петров",
+      "age": 20,
+      "currency": "RUB",
+      "country": "Russia",
+      "city": "Москва",
+      "username": "admin",
+      "avatar": "https://cdn-icons-png.flaticon.com/512/552/552721.png"
+    },
+    {
+      "id": "2",
+      "firstName": "Иван",
+      "lastName": "Иванов",
+      "age": 25,
+      "currency": "RUB",
+      "country": "Russia",
+      "city": "Москва",
+      "username": "Petrov",
+      "avatar": "https://cdn-icons-png.flaticon.com/512/552/552721.png"
+    }
+  ],
   "articles": [
     {
       "id": "1",
@@ -31,7 +45,9 @@
       "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
       "views": 1022,
       "createdAt": "26.02.2022",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -123,6 +139,36 @@
       "text": "some comment 3",
       "articleId": "1",
       "userId": "1"
+    },
+    {
+      "articleId": "1",
+      "userId": 1,
+      "text": "ghxjkasxn",
+      "id": "BvXWrmB"
+    },
+    {
+      "articleId": "1",
+      "userId": 1,
+      "text": "ghxjkasxn",
+      "id": "a8GIN3I"
+    },
+    {
+      "articleId": "1",
+      "userId": 1,
+      "text": "sasaa",
+      "id": "r7ELBdo"
+    },
+    {
+      "articleId": "1",
+      "userId": 2,
+      "text": "comment 1",
+      "id": "-ESd5_S"
+    },
+    {
+      "articleId": "1",
+      "userId": 2,
+      "text": "some comment 123",
+      "id": "sZK1Ttf"
     }
   ]
 }

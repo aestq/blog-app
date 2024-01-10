@@ -26,6 +26,6 @@ export const Auth = Template.bind({})
 Auth.args = {}
 Auth.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({
   user: {
-    authData: { username: '', id: 1 }
+    authData: { username: '', id: '1' }
   }
 })]

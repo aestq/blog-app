@@ -52,5 +52,22 @@ Default.args = {}
 Default.decorators = [StoreDecorator({
   articleDetails: {
     data
+  },
+  addCommentForm: { text: '' },
+  articleDetailsComments: {
+    ids: [1, 2],
+    entities: {
+      1: {
+        id: '1',
+        text: 'text 1',
+        user: { id: '1', username: 'user 1' }
+      },
+      2: {
+        id: '1',
+        text: 'text 1',
+        user: { id: '1', username: 'user 1' }
+      }
+    },
+    isLoading: false
   }
 })]

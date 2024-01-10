@@ -2,6 +2,7 @@ import { type EnhancedStore, type Reducer, type ReducersMapObject } from '@redux
 import { type AxiosInstance } from 'axios'
 import { type AnyAction, type CombinedState } from 'redux'
 import { type ArticleDetailsCommentsSchema } from 'pages/ArticleDetailsPage'
+import { type AddCommentFormSchema } from 'features/AddCommentForm'
 import { type LoginSchema } from 'features/AuthByUsername'
 import { type EditableProfileSchema } from 'features/EditableProfile'
 import { type ArticleDetailsSchema } from 'entities/Article'
@@ -17,6 +18,7 @@ export interface StateSchema {
   editableProfile?: EditableProfileSchema
   articleDetails?: ArticleDetailsSchema
   articleDetailsComments?: ArticleDetailsCommentsSchema
+  addCommentForm?: AddCommentFormSchema
 }
 
 export type StateSchemaKey = keyof StateSchema
