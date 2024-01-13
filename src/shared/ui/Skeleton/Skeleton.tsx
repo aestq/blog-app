@@ -12,8 +12,8 @@ interface SkeletonProps {
 export const Skeleton = (props: SkeletonProps) => {
   const {
     className,
-    height = 100,
-    width = 200,
+    height,
+    width,
     radius = 5
   } = props
 

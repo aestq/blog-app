@@ -1,4 +1,11 @@
 export { ArticleDetails } from './ui/ArticleDetails/ArticleDetails'
-export { type Article, ArticleBlockType, ArticleType } from './model/types/acticle'
+export { ArticleList } from './ui/ArticleList/ArticleList'
+
+export {
+  type Article,
+  ArticleBlockType,
+  ArticleType,
+  ArticleView
+} from './model/types/acticle'
 export type { ArticleDetailsSchema } from './model/types/articleDetailsSchema'
 export { getArticleDetailsData } from './model/selectors/articleDetails'

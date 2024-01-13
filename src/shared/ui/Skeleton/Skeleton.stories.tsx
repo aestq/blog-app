@@ -14,7 +14,10 @@ export default {
 const Template: ComponentStory<typeof Skeleton> = (args) => <Skeleton {...args} />
 
 export const Default = Template.bind({})
-Default.args = {}
+Default.args = {
+  width: 100,
+  height: 200
+}
 
 export const Circle = Template.bind({})
 Circle.args = {
