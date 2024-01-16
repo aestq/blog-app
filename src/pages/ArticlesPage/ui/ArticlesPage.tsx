@@ -1,6 +1,6 @@
-// import { useTranslation } from 'react-i18next'
 import { memo, useCallback } from 'react'
 import { useSelector } from 'react-redux'
+import { Page } from 'widgets/Page'
 import { ArticleViewSelector } from 'features/ArticleViewSelector'
 import { ArticleList, type ArticleView } from 'entities/Article'
 import { classNames } from 'shared/lib/classNames/classNames'
@@ -9,9 +9,11 @@ import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect'
 import { type ReducersList, useReducersLoader } from 'shared/lib/hooks/useReducersLoader'
 import {
   getArticlesPageIsLoading,
-  getArticlesPageView
+  getArticlesPageView,
+  getArticlesPageError
 } from '../model/selectors/articlesPageSelectors'
-import { fetchArticlesList } from '../model/services/fetchArticlesList'
+import { fetchArticlesList } from '../model/services/fetchArticlesList/fetchArticlesList'
+import { fetchNextArticlesPage } from '../model/services/fetchNextArticlesPage/fetchNextArticlesPage'
 import { articlesPageActions, articlesPageReducer, getArticles } from '../model/slice/articlesPageSlice'
 import cls from './ArticlesPage.module.scss'
 
@@ -29,21 +31,34 @@ const ArticlesPage = (props: ArticlesPageProps) => {
   const dispatch = useAppDispatch()
   const articles = useSelector(getArticles.selectAll)
   const isLoading = useSelector(getArticlesPageIsLoading)
-  // const error = useSelector(getArticlesPageError)
+  const error = useSelector(getArticlesPageError)
   const view = useSelector(getArticlesPageView)
-  // const { t } = useTranslation()
 
   const onChangeView = useCallback((newView: ArticleView) => {
     dispatch(articlesPageActions.setView(newView))
   }, [dispatch])
 
+  const onLoadNextPart = useCallback(() => {
+    dispatch(fetchNextArticlesPage())
+  }, [dispatch])
+
   useInitialEffect(() => {
-    dispatch(fetchArticlesList())
     dispatch(articlesPageActions.initState())
+    dispatch(fetchArticlesList())
   })
 
+  // TODO: fix error
+  if(error) {
+    return (
+      <>{error}</>
+    )
+  }
+
   return (
-    <div className={classNames(cls.ArticlesPage, {}, [className])}>
+    <Page
+      className={classNames(cls.ArticlesPage, {}, [className])}
+      onScrollEnd={onLoadNextPart}
+    >
       <ArticleViewSelector
         setView={onChangeView}
         view={view}
@@ -53,7 +68,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
         isLoading={isLoading}
         view={view}
       />
-    </div>
+    </Page>
   )
 }
 

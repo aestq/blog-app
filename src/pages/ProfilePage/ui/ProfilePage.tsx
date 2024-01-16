@@ -1,5 +1,6 @@
 import { memo } from 'react'
 import { useParams } from 'react-router-dom'
+import { Page } from 'widgets/Page'
 import { EditableProfile } from 'features/EditableProfile'
 import cls from './ProfilePage.module.scss'
 
@@ -11,9 +12,9 @@ const ProfilePage = () => {
   }
 
   return (
-    <div className={cls.ProfilePage}>
+    <Page className={cls.ProfilePage}>
       <EditableProfile id={id} />
-    </div>
+    </Page>
   )
 }
 

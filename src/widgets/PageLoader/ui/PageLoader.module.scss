@@ -2,5 +2,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%;
+  min-height: calc(100% - var(--navbar-height));
+  flex-grow: 1;
 }

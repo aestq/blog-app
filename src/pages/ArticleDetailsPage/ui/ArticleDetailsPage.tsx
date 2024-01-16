@@ -2,6 +2,7 @@ import { memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router'
+import { Page } from 'widgets/Page'
 import { AddCommentForm } from 'features/AddCommentForm'
 import { ArticleDetails } from 'entities/Article'
 import { CommentList } from 'entities/Comment'
@@ -60,7 +61,7 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
   }
 
   return (
-    <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
+    <Page className={classNames(cls.ArticleDetailsPage, {}, [className])}>
       <Button theme='outline' onClick={onBackToList}>
         {t('Назад к списку')}
       </Button>
@@ -71,7 +72,7 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
         isLoading={commentsIsLoading}
         comments={comments}
       />
-    </div>
+    </Page>
   )
 }
 
