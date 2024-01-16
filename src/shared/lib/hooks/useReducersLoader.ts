@@ -15,14 +15,20 @@ interface Options {
 }
 
 export function useReducersLoader(options: Options) {
-  const { reducersList, removeAfterUnmount } = options
+  const { reducersList, removeAfterUnmount = false } = options
   const store = useStore() as ReduxStoreWithManager
   const dispatch = useAppDispatch()
 
   useEffect(() => {
+    const mountedReducers = store.reducerManager.getReducerMap()
+
     Object.entries(reducersList).forEach(([key, reducer]) => {
-      store.reducerManager.add(key as StateSchemaKey, reducer)
-      dispatch({ type: `@INIT ${key} reducer` })
+      const mounted = mountedReducers[key as StateSchemaKey]
+
+      if(mounted !== reducer) {
+        store.reducerManager.add(key as StateSchemaKey, reducer)
+        dispatch({ type: `@INIT ${key} reducer` })
+      }
     })
 
     return () => {

@@ -12,8 +12,8 @@ import {
   getArticlesPageView,
   getArticlesPageError
 } from '../model/selectors/articlesPageSelectors'
-import { fetchArticlesList } from '../model/services/fetchArticlesList/fetchArticlesList'
 import { fetchNextArticlesPage } from '../model/services/fetchNextArticlesPage/fetchNextArticlesPage'
+import { initArticlesPage } from '../model/services/initArticlesPage/initArticlesPage'
 import { articlesPageActions, articlesPageReducer, getArticles } from '../model/slice/articlesPageSlice'
 import cls from './ArticlesPage.module.scss'
 
@@ -43,8 +43,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
   }, [dispatch])
 
   useInitialEffect(() => {
-    dispatch(articlesPageActions.initState())
-    dispatch(fetchArticlesList())
+    dispatch(initArticlesPage())
   })
 
   // TODO: fix error
