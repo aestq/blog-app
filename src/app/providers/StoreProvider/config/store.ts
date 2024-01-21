@@ -1,5 +1,6 @@
 import { configureStore, type Reducer, type ReducersMapObject } from '@reduxjs/toolkit'
 import { type CombinedState } from 'redux'
+import { pageReducer } from 'widgets/Page'
 import { counterReducer } from 'entities/Counter'
 import { userReducer } from 'entities/User'
 import { $api } from 'shared/api/api'
@@ -13,7 +14,8 @@ export function createReduxStore(
   const rootReducer: ReducersMapObject<StateSchema> = {
     ...asyncReducers,
     counter: counterReducer,
-    user: userReducer
+    user: userReducer,
+    page: pageReducer
   }
 
   const reducerManager = createReducerManager(rootReducer)

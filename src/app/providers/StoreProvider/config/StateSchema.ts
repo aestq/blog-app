@@ -3,6 +3,7 @@ import { type AxiosInstance } from 'axios'
 import { type AnyAction, type CombinedState } from 'redux'
 import { type ArticleDetailsCommentsSchema } from 'pages/ArticleDetailsPage'
 import { type ArticlesPageSchema } from 'pages/ArticlesPage'
+import { type PageSchema } from 'widgets/Page'
 import { type AddCommentFormSchema } from 'features/AddCommentForm'
 import { type LoginSchema } from 'features/AuthByUsername'
 import { type EditableProfileSchema } from 'features/EditableProfile'
@@ -13,6 +14,7 @@ import { type UserSchema } from 'entities/User'
 export interface StateSchema {
   counter: CounterSchema
   user: UserSchema
+  page: PageSchema
 
   // Асинхронные Reducers
   loginForm?: LoginSchema
