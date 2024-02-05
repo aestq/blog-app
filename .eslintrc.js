@@ -66,7 +66,8 @@ module.exports = {
     '@typescript-eslint/no-invalid-void-type': 'off',
     '@typescript-eslint/no-non-null-assertion': 'warn',
     '@typescript-eslint/no-redeclare': 'off',
-    'react/jsx-curly-brace-presence': ['error', { props: 'never', children: 'never' }]
+    'react/jsx-curly-brace-presence': ['error', { props: 'never', children: 'never' }],
+    '@typescript-eslint/array-type': 'off'
   },
   globals: {
     __IS_DEV__: true,

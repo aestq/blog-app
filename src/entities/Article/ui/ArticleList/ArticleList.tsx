@@ -1,8 +1,10 @@
-import { memo } from 'react'
-import { ArticleListItemSkeleton } from 'entities/Article/ui/ArticleListItem/ArticleListItemSkeleton'
+import { memo, useCallback } from 'react'
+import { useTranslation } from 'react-i18next'
 import { classNames } from 'shared/lib/classNames/classNames'
+import { Text } from 'shared/ui/Text/Text'
 import { type Article, ArticleView } from '../../model/types/acticle'
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem'
+import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton'
 import cls from './ArticleList.module.scss'
 
 interface ArticleListProps {
@@ -31,19 +33,31 @@ export const ArticleList = memo((props: ArticleListProps) => {
     view = ArticleView.TILE,
     isLoading
   } = props
+  const { t } = useTranslation()
 
-  const renderArticles = (article: Article) => (
+  const renderArticles = useCallback((article: Article) => (
     <ArticleListItem
       key={article.id}
       className={cls.item}
       article={article}
       view={view}
     />
-  )
+  ), [view])
+
+  if(!articles.length && !isLoading) {
+    return (
+      <div className={classNames(cls[view], {}, [className])}>
+        <Text
+          align='center'
+          title={t('Статьи не найдены')}
+        />
+      </div>
+    )
+  }
 
   return (
     <div className={classNames(cls[view], {}, [className])}>
-      {articles.length ? articles.map(renderArticles) : null}
+      {articles.map(renderArticles)}
       {isLoading && getSkeletons(view)}
     </div>
   )

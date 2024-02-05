@@ -1,8 +1,8 @@
 import { memo, useCallback } from 'react'
 import { useSelector } from 'react-redux'
+import { useSearchParams } from 'react-router-dom'
 import { Page } from 'widgets/Page'
-import { ArticleViewSelector } from 'features/ArticleViewSelector'
-import { ArticleList, type ArticleView } from 'entities/Article'
+import { ArticleList } from 'entities/Article'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch'
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect'
@@ -11,10 +11,11 @@ import {
   getArticlesPageIsLoading,
   getArticlesPageView,
   getArticlesPageError
-} from '../model/selectors/articlesPageSelectors'
-import { fetchNextArticlesPage } from '../model/services/fetchNextArticlesPage/fetchNextArticlesPage'
-import { initArticlesPage } from '../model/services/initArticlesPage/initArticlesPage'
-import { articlesPageActions, articlesPageReducer, getArticles } from '../model/slice/articlesPageSlice'
+} from '../../model/selectors/articlesPageSelectors'
+import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage'
+import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage'
+import { articlesPageReducer, getArticles } from '../../model/slice/articlesPageSlice'
+import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters'
 import cls from './ArticlesPage.module.scss'
 
 interface ArticlesPageProps {
@@ -28,22 +29,19 @@ const reducersList: ReducersList = {
 const ArticlesPage = (props: ArticlesPageProps) => {
   useReducersLoader({ reducersList })
   const { className } = props
+  const [searchParams] = useSearchParams()
   const dispatch = useAppDispatch()
   const articles = useSelector(getArticles.selectAll)
   const isLoading = useSelector(getArticlesPageIsLoading)
   const error = useSelector(getArticlesPageError)
   const view = useSelector(getArticlesPageView)
 
-  const onChangeView = useCallback((newView: ArticleView) => {
-    dispatch(articlesPageActions.setView(newView))
-  }, [dispatch])
-
   const onLoadNextPart = useCallback(() => {
     dispatch(fetchNextArticlesPage())
   }, [dispatch])
 
   useInitialEffect(() => {
-    dispatch(initArticlesPage())
+    dispatch(initArticlesPage(searchParams))
   })
 
   // TODO: fix error
@@ -58,10 +56,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
       className={classNames(cls.ArticlesPage, {}, [className])}
       onScrollEnd={onLoadNextPart}
     >
-      <ArticleViewSelector
-        setView={onChangeView}
-        view={view}
-      />
+      <ArticlesPageFilters />
       <ArticleList
         articles={articles}
         isLoading={isLoading}

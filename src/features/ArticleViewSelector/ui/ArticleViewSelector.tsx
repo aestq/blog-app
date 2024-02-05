@@ -9,15 +9,15 @@ import cls from './ArticleViewSelector.module.scss'
 interface ArticleViewSelectorProps {
   className?: string
   view: ArticleView
-  setView?: (view: ArticleView) => void
+  onChange?: (view: ArticleView) => void
 }
 
 export const ArticleViewSelector = memo((props: ArticleViewSelectorProps) => {
-  const { className, view, setView } = props
+  const { className, view, onChange } = props
 
   const onClick = (newView: ArticleView) => {
     return () => {
-      setView?.(newView)
+      onChange?.(newView)
     }
   }
 

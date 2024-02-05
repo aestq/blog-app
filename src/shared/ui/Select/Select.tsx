@@ -2,23 +2,23 @@ import { type ChangeEvent, memo, type SelectHTMLAttributes, useCallback } from '
 import { classNames, type Mods } from 'shared/lib/classNames/classNames'
 import cls from './Select.module.scss'
 
-export interface SelectItem {
+export interface SelectItem<T extends string> {
   content: string
-  value: string
+  value: T
 }
 
 type SelectHTMLProps = Omit<SelectHTMLAttributes<HTMLSelectElement>, 'onChange' | 'value'>
 
-interface SelectProps extends SelectHTMLProps {
+interface SelectProps<T extends string> extends SelectHTMLProps {
   className?: string
   label?: string
-  options?: SelectItem[]
+  options?: Array<SelectItem<T>>
   value?: string
-  onChange?: (value: string) => void
+  onChange?: (value: T) => void
   readonly?: boolean
 }
 
-export const Select = memo((props: SelectProps) => {
+const SelectComponent = <T extends string>(props: SelectProps<T>) => {
   const {
     className,
     label,
@@ -29,10 +29,10 @@ export const Select = memo((props: SelectProps) => {
   } = props
 
   const onChangeHandler = useCallback((event: ChangeEvent<HTMLSelectElement>) => {
-    onChange?.(event.target.value)
+    onChange?.(event.target.value as T)
   }, [onChange])
 
-  const render = useCallback((item: SelectItem) => (
+  const render = useCallback((item: SelectItem<T>) => (
     <option
       className={cls.option}
       value={item.value}
@@ -65,4 +65,6 @@ export const Select = memo((props: SelectProps) => {
       </select>
     </div>
   )
-})
+}
+
+export const Select = memo(SelectComponent) as typeof SelectComponent
