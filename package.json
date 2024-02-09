@@ -22,7 +22,8 @@
     "test:ui:ci": "npx loki --requireReference --reactUri file:./storybook-static",
     "storybook": "start-storybook -p 5001 -c ./config/storybook",
     "storybook:build": "build-storybook -c ./config/storybook",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "generate:slice": "node ./scripts/generate-slice/index.js"
   },
   "keywords": [],
   "author": "",
@@ -69,6 +70,7 @@
     "html-webpack-plugin": "^5.5.0",
     "husky": "^8.0.3",
     "identity-obj-proxy": "^3.0.0",
+    "inquirer": "^8.2.4",
     "jest": "^27.5.1",
     "json-server": "^0.17.3",
     "loki": "^0.30.0",
