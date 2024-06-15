@@ -6,22 +6,20 @@ import { Page } from 'widgets/Page'
 import { AddCommentForm } from 'features/AddCommentForm'
 import { ArticleDetails, ArticleList } from 'entities/Article'
 import { CommentList } from 'entities/Comment'
-import { routePath } from 'shared/config/routeConfig/routeConfig'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch'
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect'
 import { type ReducersList, useReducersLoader } from 'shared/lib/hooks/useReducersLoader'
-import { AppLink } from 'shared/ui/AppLink/AppLink'
-import { Button } from 'shared/ui/Button/Button'
 import { Text } from 'shared/ui/Text/Text'
-import { getArticleCommentsIsLoading } from '../model/selectors/comments'
-import { getArticleRecommendationsIsLoading } from '../model/selectors/recommendations'
-import { addCommentForArticle } from '../model/services/addCommentForArticle'
-import { fetchArticleCommentsById } from '../model/services/fetchArticleCommentsById'
-import { fetchArticleRecommendations } from '../model/services/fetchArticleRecommendations'
-import { articleDetailsPageReducer } from '../model/slice'
-import { getArticleComments } from '../model/slice/articleDetailsCommentsSlice'
-import { getArticleRecommendations } from '../model/slice/articleDetailsPageRecommendationsSlice'
+import { getArticleCommentsIsLoading } from '../../model/selectors/comments'
+import { getArticleRecommendationsIsLoading } from '../../model/selectors/recommendations'
+import { addCommentForArticle } from '../../model/services/addCommentForArticle'
+import { fetchArticleCommentsById } from '../../model/services/fetchArticleCommentsById'
+import { fetchArticleRecommendations } from '../../model/services/fetchArticleRecommendations'
+import { articleDetailsPageReducer } from '../../model/slice'
+import { getArticleComments } from '../../model/slice/articleDetailsCommentsSlice'
+import { getArticleRecommendations } from '../../model/slice/articleDetailsPageRecommendationsSlice'
+import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader'
 import cls from './ArticleDetailsPage.module.scss'
 
 interface ArticleDetailsPageProps {
@@ -66,11 +64,7 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
 
   return (
     <Page className={classNames(cls.ArticleDetailsPage, {}, [className])}>
-      <AppLink to={routePath.articles}>
-        <Button theme='outline'>
-          {t('Назад к списку')}
-        </Button>
-      </AppLink>
+      <ArticleDetailsPageHeader />
       <ArticleDetails id={id} />
       <Text
         className={cls.commentsTitle}

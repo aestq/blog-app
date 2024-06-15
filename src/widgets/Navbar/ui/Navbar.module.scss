@@ -5,5 +5,15 @@
   display: flex;
   align-items: center;
   padding: 20px 40px;
-  justify-content: flex-end;
+  justify-content: space-between;
+}
+
+.appName {
+  width: var(--sidebar-width);
+  margin-left: -5px;
+}
+
+.left {
+  display: flex;
+  align-items: center;
 }
