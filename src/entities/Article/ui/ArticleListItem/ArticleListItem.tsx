@@ -1,9 +1,9 @@
-import { memo } from 'react'
+import { type HTMLAttributeAnchorTarget, memo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useNavigate } from 'react-router'
 import EyeIcon from 'shared/assets/icons/eye-icon.svg'
 import { routePath } from 'shared/config/routeConfig/routeConfig'
 import { classNames } from 'shared/lib/classNames/classNames'
+import { AppLink } from 'shared/ui/AppLink/AppLink'
 import { Avatar } from 'shared/ui/Avatar/Avatar'
 import { Button } from 'shared/ui/Button/Button'
 import { Card } from 'shared/ui/Card/Card'
@@ -19,20 +19,17 @@ interface ArticleListItemProps {
   className?: string
   view: ArticleView
   article: Article
+  target?: HTMLAttributeAnchorTarget
 }
 
 export const ArticleListItem = memo((props: ArticleListItemProps) => {
   const {
     className,
     article,
-    view
+    view,
+    target
   } = props
   const { t } = useTranslation()
-  const navigate = useNavigate()
-
-  const onOpenArticle = () => {
-    navigate(routePath.article_details + article.id)
-  }
 
   const types = <Text className={cls.types} text={article.type.join(', ')} />
   const views = (
@@ -67,9 +64,11 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
           <TextBlock className={cls.textBlock} block={textBlock} />
         )}
         <div className={cls.footer}>
-          <Button onClick={onOpenArticle} theme='outline'>
-            {t('Читать далее...')}
-          </Button>
+          <AppLink to={routePath.article_details + article.id} target={target}>
+            <Button theme='outline'>
+              {t('Читать далее...')}
+            </Button>
+          </AppLink>
           {views}
         </div>
       </Card>
@@ -77,24 +76,28 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
   }
 
   return (
-    <Card
+    <AppLink
+      to={routePath.article_details + article.id}
+      target={target}
       className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}
-      onClick={onOpenArticle}
     >
-      <div className={cls.imageContainer}>
-        <img
-          className={cls.image}
-          src={article.img}
-          alt={article.title}
-        />
-        <Text className={cls.date} text={article.createdAt} />
-      </div>
-      <div className={cls.detailsContainer}>
-        {types}
-        {views}
-      </div>
-      <Text className={cls.title} text={article.title} />
-    </Card>
+      <Card>
+        <div className={cls.imageContainer}>
+          <img
+            className={cls.image}
+            src={article.img}
+            alt={article.title}
+            />
+          <Text className={cls.date} text={article.createdAt} />
+        </div>
+        <div className={cls.detailsContainer}>
+          {types}
+          {views}
+        </div>
+        <Text className={cls.title} text={article.title} />
+      </Card>
+    </AppLink>
+
   )
 })
 

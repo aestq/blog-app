@@ -1,4 +1,4 @@
-import { memo, useCallback } from 'react'
+import { type HTMLAttributeAnchorTarget, memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { Text } from 'shared/ui/Text/Text'
@@ -12,6 +12,7 @@ interface ArticleListProps {
   articles: Article[]
   isLoading?: boolean
   view?: ArticleView
+  target?: HTMLAttributeAnchorTarget
 }
 
 const getSkeletons = (view: ArticleView) => (
@@ -31,7 +32,8 @@ export const ArticleList = memo((props: ArticleListProps) => {
     className,
     articles,
     view = ArticleView.TILE,
-    isLoading
+    isLoading,
+    target
   } = props
   const { t } = useTranslation()
 
@@ -40,9 +42,10 @@ export const ArticleList = memo((props: ArticleListProps) => {
       key={article.id}
       className={cls.item}
       article={article}
+      target={target}
       view={view}
     />
-  ), [view])
+  ), [view, target])
 
   if(!articles.length && !isLoading) {
     return (

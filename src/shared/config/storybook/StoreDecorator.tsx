@@ -1,7 +1,7 @@
 import { type ReducersMapObject } from '@reduxjs/toolkit'
 import { type Story } from '@storybook/react'
 import { type StateSchema, StoreProvider } from 'app/providers/StoreProvider'
-import { articleDetailsCommentsReducer } from 'pages/ArticleDetailsPage/model/slice/articleDetailsCommentsSlice'
+import { articleDetailsPageReducer } from 'pages/ArticleDetailsPage/model/slice'
 import { addCommentFormReducer } from 'features/AddCommentForm/model/slice/addCommentFormSlice'
 import { loginReducer } from 'features/AuthByUsername/model/slice/loginSlice'
 import { editableProfileReducer } from 'features/EditableProfile/model/slice/editableProfileSlice'
@@ -12,7 +12,7 @@ const defaultReducers: ReducersList = {
   loginForm: loginReducer,
   editableProfile: editableProfileReducer,
   articleDetails: articleDetailsReducer,
-  articleDetailsComments: articleDetailsCommentsReducer,
+  articleDetailsPage: articleDetailsPageReducer,
   addCommentForm: addCommentFormReducer
 }
 

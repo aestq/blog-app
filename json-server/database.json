@@ -63,7 +63,9 @@
       "views": 22432,
       "createdAt": "11.11.2022",
       "userId": "1",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -228,7 +230,7 @@
       ]
     },
     {
-      "id": "3",
+      "id": "4",
       "title": "Kotlin news 2019",
       "subtitle": "Что нового в JS за 2022 год?",
       "img": "https://miro.medium.com/max/1200/1*FNakkrty3kjOvNU8m5iQfw.png",
@@ -714,6 +716,12 @@
       "userId": "1",
       "text": "python!!!",
       "id": "p5rMadd"
+    },
+    {
+      "articleId": "1",
+      "userId": "3",
+      "text": "cjkcjk",
+      "id": "70Z5_FN"
     }
   ]
 }
