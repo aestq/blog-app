@@ -1,4 +1,4 @@
-import { type ComponentProps, type ElementType, forwardRef, type ReactNode } from 'react'
+import { type ComponentProps, type ElementType, type ReactNode } from 'react'
 import { type Additional, classNames } from 'shared/lib/classNames/classNames'
 import cls from './Flex.module.scss'
 
