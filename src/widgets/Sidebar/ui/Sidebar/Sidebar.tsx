@@ -4,6 +4,8 @@ import { LangSwitcher } from 'features/LangSwitcher'
 import { ThemeSwitcher } from 'features/ThemeSwitcher'
 import { classNames, type Mods } from 'shared/lib/classNames/classNames'
 import { Button } from 'shared/ui/Button/Button'
+import { HStack } from 'shared/ui/Stack/HStack'
+import { VStack } from 'shared/ui/Stack/VStack'
 import { getSidebarItems } from '../../model/selectors/getSidebarItems'
 import { SidebarItem } from '../SidebarItem/SidebarItem'
 import cls from './Sidebar.module.scss'
@@ -30,7 +32,7 @@ export const Sidebar = memo((props: SidebarProps) => {
       className={classNames(cls.Sidebar, mods, [className])}
       data-testid='sidebar'
     >
-      <div className={cls.items}>
+      <VStack className={cls.items} gap='8'>
         {items.map(item => (
           <SidebarItem
             collapsed={collapsed}
@@ -38,7 +40,7 @@ export const Sidebar = memo((props: SidebarProps) => {
             key={item.path}
           />
         ))}
-      </div>
+      </VStack>
       <Button
         data-testid='sidebar-toggle'
         className={cls.collapseButton}
@@ -49,13 +51,18 @@ export const Sidebar = memo((props: SidebarProps) => {
       >
         {collapsed ? '>' : '<'}
       </Button>
-      <div className={cls.switchers}>
+      <HStack
+        className={cls.switchers}
+        justify='center'
+        gap='16'
+        max
+      >
         <ThemeSwitcher />
         <LangSwitcher
           className={cls.langSwitcher}
           short={collapsed}
         />
-      </div>
+      </HStack>
     </aside>
   )
 })

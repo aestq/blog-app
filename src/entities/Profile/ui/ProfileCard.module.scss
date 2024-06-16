@@ -1,22 +1,10 @@
 .ProfileCard {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
   border: 2px solid var(--inverted-bg-color);
   padding: 15px;
 }
 
 .isLoading, .error {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   height: 60vh;
-}
-
-.avatarWrapper {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 10px;
 }
 
 .editing {

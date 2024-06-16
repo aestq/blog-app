@@ -10,6 +10,8 @@ import { type ReducersList, useReducersLoader } from 'shared/lib/hooks/useReduce
 import { Avatar } from 'shared/ui/Avatar/Avatar'
 import { Icon } from 'shared/ui/Icon/Icon'
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton'
+import { HStack } from 'shared/ui/Stack/HStack'
+import { VStack } from 'shared/ui/Stack/VStack'
 import { Text } from 'shared/ui/Text/Text'
 import {
   getArticleDetailsData,
@@ -103,26 +105,26 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
 
   return (
     <div className={classNames(cls.ArticleDetails, {}, [className])}>
-      <div className={cls.avatarContainer}>
+      <VStack justify='center' className={cls.avatarContainer}>
         <Avatar
           className={cls.avatar}
           size={200}
           src={data?.img}
         />
-      </div>
+      </VStack>
       <Text
         title={data?.title}
         text={data?.subtitle}
         size='m'
       />
-      <div className={cls.articleInfo}>
+      <HStack>
         <Icon className={cls.icon} Svg={EyeIcon} />
         <Text text={String(data?.views)} />
-      </div>
-      <div className={cls.articleInfo}>
+      </HStack>
+      <HStack>
         <Icon className={cls.icon} Svg={DateIcon} />
         <Text text={data?.createdAt} />
-      </div>
+      </HStack>
       {data?.blocks.map(renderBlocks)}
     </div>
   )

@@ -1,12 +1,14 @@
 import { useTranslation } from 'react-i18next'
 import { CountrySelect, type Country } from 'entities/Country'
 import { type Currency, CurrencySelect } from 'entities/Currency'
-import { type Profile } from 'entities/Profile'
 import { classNames, type Mods } from 'shared/lib/classNames/classNames'
 import { Avatar } from 'shared/ui/Avatar/Avatar'
 import { Input } from 'shared/ui/Input/Input'
 import { Loader } from 'shared/ui/Loader/Loader'
+import { HStack } from 'shared/ui/Stack/HStack'
+import { VStack } from 'shared/ui/Stack/VStack'
 import { Text } from 'shared/ui/Text/Text'
+import { type Profile } from '../model/profile'
 import cls from './ProfileCard.module.scss'
 
 interface ProfileCardProps {
@@ -45,22 +47,28 @@ export const ProfileCard = (props: ProfileCardProps) => {
 
   if(isLoading) {
     return (
-      <div className={classNames(cls.ProfileCard, {}, [className, cls.isLoading])}>
+      <HStack
+        className={classNames(cls.ProfileCard, {}, [className, cls.isLoading])}
+        justify='center'
+      >
         <Loader />
-      </div>
+      </HStack>
     )
   }
 
   if(error) {
     return (
-      <div className={classNames(cls.ProfileCard, {}, [className, cls.error])}>
+      <HStack
+        className={classNames(cls.ProfileCard, {}, [className, cls.error])}
+        justify='center'
+      >
         <Text
           theme='error'
           title={t('Произошла ошибка при загрузке профиля')}
           text={t('Попробуйте обновить страницу')}
           align='center'
         />
-      </div>
+      </HStack>
     )
   }
 
@@ -69,11 +77,11 @@ export const ProfileCard = (props: ProfileCardProps) => {
   }
 
   return (
-    <div className={classNames(cls.ProfileCard, mods, [className])}>
+    <VStack className={classNames(cls.ProfileCard, mods, [className])} gap='8'>
       {data?.avatar && (
-        <div className={cls.avatarWrapper}>
+        <VStack align='center' max>
           <Avatar src={data?.avatar} size={100} />
-        </div>
+        </VStack>
       )}
       <Input
         value={data?.firstName}
@@ -121,6 +129,6 @@ export const ProfileCard = (props: ProfileCardProps) => {
         onChange={onChangeCountry}
         readonly={readonly}
       />
-    </div>
+    </VStack>
   )
 }

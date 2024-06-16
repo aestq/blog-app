@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import { getUserAuthData } from 'entities/User'
 import { classNames, type Mods } from 'shared/lib/classNames/classNames'
 import { AppLink } from 'shared/ui/AppLink/AppLink'
+import { HStack } from 'shared/ui/Stack/HStack'
 import { type SidebarItemType } from '../../model/types/sidebar'
 import cls from './SidebarItem.module.scss'
 
@@ -26,17 +27,19 @@ export const SidebarItem = memo((props: SidebarItemProps) => {
   }
 
   return (
-    <AppLink
+    <HStack
       theme='secondary'
       to={item.path}
-      className={classNames(cls.SidebarItem, mods)}
+      className={classNames('', mods, [])}
+      as={AppLink}
+      gap='8'
     >
-      <item.Icon className={cls.icon} />
+      <item.Icon className={cls.icon}/>
       <span
         className={cls.link}
       >
         {t(item.text)}
       </span>
-    </AppLink>
+    </HStack>
   )
 })

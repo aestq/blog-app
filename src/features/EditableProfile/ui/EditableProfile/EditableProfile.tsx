@@ -1,7 +1,6 @@
 import { memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
-import { ValidateProfileError } from 'features/EditableProfile/model/types/EditableProfileSchema'
 import { type Country } from 'entities/Country'
 import { type Currency } from 'entities/Currency'
 import { ProfileCard } from 'entities/Profile'
@@ -17,6 +16,7 @@ import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/get
 import { getProfileValidateErrors } from '../../model/selectors/getProfileValidateErrors/getProfileValidateErrors'
 import { fetchProfileData } from '../../model/services/fetchProfileData/fetchProfileData'
 import { editableProfileActions, editableProfileReducer } from '../../model/slice/editableProfileSlice'
+import { ValidateProfileError } from '../../model/types/EditableProfileSchema'
 import { EditableProfileHeader } from '../EditableProfileHeader/EditableProfileHeader'
 import cls from './EditableProfile.module.scss'
 

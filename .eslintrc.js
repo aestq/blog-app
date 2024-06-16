@@ -33,7 +33,8 @@ module.exports = {
   plugins: [
     'react',
     'i18next',
-    'react-hooks'
+    'react-hooks',
+    'blog-app-fsd-plugin'
   ],
   settings: {
     react: {
@@ -68,7 +69,8 @@ module.exports = {
     '@typescript-eslint/no-redeclare': 'off',
     'react/jsx-curly-brace-presence': ['error', { props: 'never', children: 'never' }],
     '@typescript-eslint/array-type': 'off',
-    '@typescript-eslint/promise-function-async': 'off'
+    '@typescript-eslint/promise-function-async': 'off',
+    'blog-app-fsd-plugin/path-checker': 'error'
   },
   globals: {
     __IS_DEV__: true,

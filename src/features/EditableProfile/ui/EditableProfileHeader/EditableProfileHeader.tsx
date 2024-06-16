@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch'
 import { Button } from 'shared/ui/Button/Button'
+import { HStack } from 'shared/ui/Stack/HStack'
 import { Text } from 'shared/ui/Text/Text'
 import { getCanEditProfile } from '../../model/selectors/getCanEditProfile/getCanEditProfile'
 import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly'
@@ -35,7 +36,7 @@ export const EditableProfileHeader = (props: EditableProfileHeaderProps) => {
   }, [dispatch])
 
   return (
-    <header className={classNames(cls.EditableProfileHeader, {}, [className])}>
+    <HStack as='header' className={classNames(cls.EditableProfileHeader, {}, [className])}>
       <Text title={t('Профиль')} />
       {isCanEdit && (
         <>
@@ -69,6 +70,6 @@ export const EditableProfileHeader = (props: EditableProfileHeaderProps) => {
           }
         </>
       )}
-    </header>
+    </HStack>
   )
 }

@@ -1,8 +1,8 @@
-import { ValidateProfileError } from 'features/EditableProfile/model/types/EditableProfileSchema'
 import { Country } from 'entities/Country'
 import { Currency } from 'entities/Currency'
 import { type Profile } from 'entities/Profile'
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk'
+import { ValidateProfileError } from '../../types/EditableProfileSchema'
 import { updateProfileData } from './updateProfileData'
 
 const profileData: Profile = {
